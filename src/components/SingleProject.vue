@@ -5,7 +5,7 @@
         <h3>{{ project.title }}</h3>
       </div>
       <div>
-        <i class="bi bi-trash"></i>
+        <i class="bi bi-trash" @click="deleteProject"></i>
         <i class="bi bi-pen"></i>
         <i class="bi bi-check2"></i>
       </div>
@@ -20,8 +20,20 @@ export default {
   data() {
     return {
       showDetail: false,
+      api:"http://localhost:3000/projects/"
     };
   },
+  methods:{
+    deleteProject(){
+    fetch(this.api+this.project.id,{method:"DELETE"})
+    .then(()=>{
+        this.$emit("delete",this.project.id)
+    })
+    .catch((err)=>{
+console.log(err);
+    })
+    }
+  }
 };
 </script>
 
