@@ -1,9 +1,28 @@
 {
   "projects": [
     {
+      "id": 2,
+      "detail": "manager",
+      "title": "hi 1",
+      "complete": false
+    },
+    {
       "id": 3,
       "detail": "manager",
-      "title": "hi 1"
+      "title": "hi 1",
+      "complete": false
+    },
+    {
+      "id": 4,
+      "detail": "manager",
+      "title": "hi 1",
+      "complete": true
+    },
+    {
+      "id": 5,
+      "detail": "manager",
+      "title": "hi 1",
+      "complete": true
     }
   ]
 }
