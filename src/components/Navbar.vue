@@ -1,19 +1,17 @@
 <template>
   <nav class="main-nav">
-      <router-link :to="{name:'home'}">Project</router-link>
-      <router-link :to="{name:'addProject'}">Add Project</router-link>
-
+    <router-link to="/">Projects</router-link>
+    <router-link :to="{name:'AddProject'}">Add project</router-link>
   </nav>
 </template>
 
 <script>
 export default {
-
 }
 </script>
 
 <style>
- .main-nav {
+    .main-nav {
         text-align: center;
         margin: 40px auto;
       }

@@ -1,37 +1,54 @@
 <template>
-
+  <h1>Add</h1>
   <form @submit.prevent="addProject">
-    <h1>Add</h1>
       <label>Project Title</label>
       <input type="text" v-model="title">
       <label>Project Detail</label>
       <input type="text" v-model="detail">
-      <button class="mt-3 btn btn-success">Add Project</button>
+      <button>Add Project</button>
   </form>
 </template>
+
 <script>
 export default {
-        data(){
-            return{
-                title:"",
-                detail:""
-            }
+  data(){
+      return{
+        title:"",
+        detail:""
+      }
+  },
+  methods:{
+    addProject(){
+      fetch("http://localhost:3000/projects",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
         },
-        methods:{
-            addProject(){
-             
-            }
-        }
+        body:JSON.stringify(
+          {
+            title:this.title,
+            detail:this.detail,
+            complete:false
+          }
+        )
+      })
+      .then(()=>{
+        // redirect
+        this.$router.push("/")
+      })
+      .catch((err)=>{
+        console.log(err);
+      })
+    }
+  }
 }
 </script>
 
 <style>
- form {
+  form {
     background: white;
     padding: 20px;
     border-radius: 10px;
-    margin: 10px auto;
-    width: 400px;
   }
   label {
     display: block;
@@ -56,7 +73,7 @@ export default {
     box-sizing: border-box;
     height: 100px;
   }
-  /* form button {
+  form button {
     display: block;
     margin: 20px auto 0;
     background: #00ce89;
@@ -65,5 +82,5 @@ export default {
     border: 0;
     border-radius: 6px;
     font-size: 16px;
-  } */
+  }
 </style>
